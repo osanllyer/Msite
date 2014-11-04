@@ -11,9 +11,17 @@ from flask import render_template
 app = Flask(__name__)
 
 @app.route('/')
-@app.route('/hello/<username>')
-def hello_world(username=None):
-    return render_template('index.html', name=username)
+def hello_world():
+    return render_template('index.html')
+
+@app.route('/ask')
+def ask():
+    return render_template('ask.html',backUrl="/")
+
+@app.route('/t/<template_name>')
+def commonTemplate(template_name):
+    return render_template(template_name + '.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)
