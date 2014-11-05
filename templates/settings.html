@@ -1,0 +1,38 @@
+<!-- 这个页面用来更改整个系统的设置 -->
+{%extends 'common/base.html'%}
+{%block content%}
+<div data-role="tabs" id="setting_tabs">
+  <div data-role="navbar">
+    <ul>
+      <li><a href="#one" data-ajax="false">常用</a></li>
+      <li><a href="#two" data-ajax="false">高级</a></li>
+    </ul>
+  </div>
+  <div id="one" class="ui-body-d ui-content">
+    <ul data-role="listview">
+    	<li data-role="list-divider">主题</li>
+    	<li>
+	    	<form>
+			    <div class="ui-field-contain">
+			        <label for="theme">夜间模式:</label>
+			        <select name="theme" id="theme" data-role="flipswitch">
+			            <option value="off">白天</option>
+			            <option value="on">黑夜</option>
+			        </select>
+			    </div>
+			</form>
+		</li>
+		<li data-role="list-divider">其他</li>
+    </ul>
+  </div>
+  <div id="two">
+    <ul data-role="listview" data-inset="true">
+        <li><a href="#">Acura</a></li>
+        <li><a href="#">Audi</a></li>
+        <li><a href="#">BMW</a></li>
+        <li><a href="#">Cadillac</a></li>
+        <li><a href="#">Ferrari</a></li>
+    </ul>
+  </div>
+</div>
+{%endblock%}

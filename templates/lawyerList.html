@@ -1,0 +1,45 @@
+{%extends "common/base.html"%}
+{%block content%}
+<!-- filter bar -->
+<form>
+<fieldset data-role="controlgroup" data-type="horizontal">
+    <label for="select-native-11">Select A</label>
+    <select name="select-native-11" id="select-native-11">
+        <option value="#">One</option>
+        <option value="#">Two</option>
+        <option value="#">Three</option>
+    </select>
+    <label for="select-native-12">Select B</label>
+    <select name="select-native-12" id="select-native-12">
+        <option value="#">One</option>
+        <option value="#">Two</option>
+        <option value="#">Three</option>
+    </select>
+    <label for="select-native-13">sort</label>
+    <select name="select-native-13" id="select-native-13">
+        <option value="#">人气</option>
+        <option value="#">积分</option>
+        <option value="#">在线</option>
+    </select>
+</fieldset>
+</form>
+<!-- end filter bar -->
+<!-- item list -->
+<ul data-role="listview">
+	{%for i in range(10)%}
+		<li>
+		<div class="ui-grid-a">
+    		<div class="ui-block-a"><div class="ui-bar ui-bar-a" style="height:60px"><img src="/static/img/111111.gif" width:100 height:100/></div></div>
+    		<div class="ui-block-b">
+    			<div class="ui-bar ui-bar-a" style="height:60px">
+    			<p>姓名:李奋波</p>
+				<p>积分:11111</p>
+				<p>专长:ABC</p>
+				</div>
+			</div>
+		</div>
+		</li>
+	{%endfor%}
+</ul>
+<!-- end item list -->
+{%endblock%}
