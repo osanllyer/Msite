@@ -1,3 +1,8 @@
+function showPosition(){
+	alert("position");
+//	alert("Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude);
+}
+
 $(
 /**
  * load when init page
@@ -10,6 +15,13 @@ function(){
 		$("#pageone").removeClass( "ui-page-theme-a ui-page-theme-b" ).addClass( "ui-page-theme-" + themeCode );
 		$("#header").removeClass( "ui-page-theme-a ui-page-theme-b" ).addClass( "ui-page-theme-" + themeCode );
 		$("#footer").removeClass( "ui-page-theme-a ui-page-theme-b" ).addClass( "ui-page-theme-" + themeCode );
+	}
+	
+	//require location authentication
+	if(navigator.geolocation){
+		navigator.geolocation.getCurrentPosition(showPosition);
+	}else{
+		alert("geolocation is not supported");
 	}
 	
 	
@@ -36,4 +48,6 @@ function(){
 	);
 			
 });
+
+
 
