@@ -11,8 +11,11 @@ from flask import render_template
 import os, os.path
 from flask.helpers import url_for
 import common.definitions as Definitions
+from templates.admin.init import InitServer, InitDBs
 
 app = Flask(__name__)
+
+
 
 @app.route('/')
 def hello_world():
@@ -26,6 +29,27 @@ def ask():
 # def img_file(filename):
 #     '访问图像文件'
 #     return url_for('/static/img', filename=filename)
+
+@app.route('/admin/<template_name>')
+def admin(template_name):
+    '访问管理模板'
+    filePath = os.path.dirname(__file__)
+    '''check template exists'''
+    if os.path.exists(filePath + '/templates/admin/' + template_name + '.html'):
+        path, filename = os.path.split(template_name)
+        title = Definitions.template_title_map.get(filename)
+        return render_template(template_name + '.html', title=title)
+    else:
+        abort(404)    
+    pass
+
+@app.route('/init')
+def init_sys():
+    initServer = InitServer();
+    initDbs = InitDBs();
+    initServer.init();
+    initDbs.init();
+    pass
 
 @app.route('/t/<template_name>')
 def commonTemplate(template_name):
