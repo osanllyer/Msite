@@ -1,0 +1,9 @@
+{%macro pagerbar(urls, counts, start)%}
+
+<div data-role="controlgroup" data-type="horizontal">
+	{%for i in range(counts) %}
+		<a href="{{urls[i]}}" data-role="button">{{start+i}}</a>
+	{%endfor%}
+</div>
+
+{%endmacro%}

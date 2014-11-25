@@ -9,13 +9,13 @@ Created on Oct 29, 2014
 from flask import Flask, abort
 from flask import render_template
 import os, os.path
-from flask.helpers import url_for
 import common.definitions as Definitions
-from templates.admin.init import InitServer, InitDBs
+
+from Model.lawyer import *
+from bottle import template
+
 
 app = Flask(__name__)
-
-
 
 @app.route('/')
 def hello_world():
@@ -43,12 +43,16 @@ def admin(template_name):
         abort(404)    
     pass
 
+@app.route('/t/lawyerlist/<int:page>/<int:num>')
+def lawyerList(page, num):
+    
+    lawyerDao = LawyerDao()
+    lawyers = lawyerDao.getLawyerList("1", (page-1) * num, num)
+    return render_template('lawyerList.html', lawyers=lawyers)
+
 @app.route('/init')
 def init_sys():
-    initServer = InitServer();
-    initDbs = InitDBs();
-    initServer.init();
-    initDbs.init();
+    '''初始化数据库和系统'''
     pass
 
 @app.route('/t/<template_name>')

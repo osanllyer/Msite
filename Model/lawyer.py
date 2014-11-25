@@ -8,6 +8,7 @@ from sqlalchemy import *
 from sqlalchemy.orm import *
 from base import *
 from firm import Firm
+from Model.base import *
 
 class Lawyer(Base):
     '''
@@ -36,16 +37,26 @@ class LawyerLocation(Base):
     latitude = Column(String)
     last_updated = Column(DateTime)
 
-
-
-if __name__ == '__main__':
-    'test'
-    Base.metadata.create_all(engine)
-    
+class LawyerDao(object):
     Session = sessionmaker(bind=engine)
     session = Session()
-    session.add(Firm(name="bobo", addr="taiwang"))
-    # session.add(Lawyer(name="aaaa", firm=1, headprotrait="adfdsfsdf", certificateId=3))
-    session.flush()
-    session.commit()
-    session.query(Firm)
+    
+    sortmap = {
+               "1":"id asc",
+               }
+    
+    def getLawyerList(self, sort, start, num):
+        '''获取指定数量的lawyer'''
+        order = None
+        if sort in LawyerDao.sortmap.keys():
+            order = LawyerDao.sortmap[sort]
+        else:
+            'default order'
+            order = LawyerDao.sortmap["1"]
+            
+        lawyers = LawyerDao.session.query(Lawyer).order_by(Lawyer.id)[start:start+num]
+        
+        return lawyers
+        pass
+        
+
