@@ -7,24 +7,22 @@ Created on 2014年11月19日
 from sqlalchemy import *
 from sqlalchemy.orm import *
 from base import *
-from firm import Firm
 from Model.base import *
 
 class Lawyer(Base):
     '''
     lawyer
     '''
-    
     __tablename__ = 'lawyer'
     id = Column(Integer, primary_key=True)
     name = Column(String)
-    headprotrait = Column(String)
-    certificateId = Column(String)
+    headportrait = Column(String)
+    certificate_id = Column(String)
     score = Column(Integer)
-    firm = Column(Integer, ForeignKey('firm.id'))
+    firm_id = Column(Integer, ForeignKey('firm.id'))
     last_updated = Column(DateTime)
     
-   
+print Lawyer().__table__   
     
 class LawyerLocation(Base):
     '''store lawyer locations realtime, so there maybe many writes , may be shourld use redis'''

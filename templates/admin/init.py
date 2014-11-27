@@ -7,8 +7,10 @@ Created on 2014年11月19日
 import os
 
 from Model.base import *
-from Model.firm import *
+from Model.firm import Firm
 from Model.lawyer import *
+from Model.question import *
+from Model.user import *  
  
 from common.logger import *
 logger = logging.getLogger(__file__)

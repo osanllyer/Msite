@@ -17,5 +17,4 @@ class Configs(object):
     
     @staticmethod
     def getAttr(sec, option):
-        print Configs.cf.sections()
         return Configs.cf.get(sec, option);

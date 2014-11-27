@@ -45,7 +45,6 @@ def admin(template_name):
 
 @app.route('/t/lawyerlist/<int:page>/<int:num>')
 def lawyerList(page, num):
-    
     lawyerDao = LawyerDao()
     lawyers = lawyerDao.getLawyerList("1", (page-1) * num, num)
     return render_template('lawyerList.html', lawyers=lawyers)
@@ -66,7 +65,7 @@ def commonTemplate(template_name):
         return render_template(template_name + '.html', title=title)
     else:
         abort(404)
-
+'=======================================================common============================================='
 @app.errorhandler(404)
 def pageNotFound(error):
     return render_template('common/404.html'), 404

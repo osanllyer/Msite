@@ -11,10 +11,10 @@ from Model.lawyer import Lawyer, LawyerLocation
 from sqlalchemy import *
 from sqlalchemy.orm import *
 from Model.base import *
+from Model.user import User
+from Model.question import *
 
 def insertLawyerLocation():
-    Session = sessionmaker(bind=engine)
-    session = Session()
 
     session.add(LawyerLocation(lawyer_id=1, longitude=116.435, latitude=39.993))
     session.add(LawyerLocation(lawyer_id=2, longitude=116.455, latitude=39.963))
@@ -24,12 +24,53 @@ def insertLawyerLocation():
     
     pass
 
-def insertFirmsAndLawyers():
- 
+
+def insertPostType():
+
+    session.add(PostType(typename='wedding'))
     
+    pass
+
+def insertPostsAndAnswers():
+
+    session.add(Posts(uid=1, conent='this is my question', ptype=1))
+    session.add(Posts(uid=2, conent='this is my question', ptype=1))
+    session.add(Posts(uid=3, conent='this is my question', ptype=1))
+    session.add(Posts(uid=4, conent='this is my question', ptype=1))
+    session.add(Posts(uid=1, conent='this is my question', ptype=1))
+    session.add(Posts(uid=2, conent='this is my question', ptype=1))
+    session.add(Posts(uid=3, conent='this is my question', ptype=1))
+    session.add(Posts(uid=2, conent='this is my question', ptype=1))
+    session.add(Posts(uid=1, conent='this is my question', ptype=1))
+
+    session.add(Answer(lawyer_id=1, post_id=1, content="this is answer"))
+    session.add(Answer(lawyer_id=2, post_id=2, content="this is answer"))
+    session.add(Answer(lawyer_id=3, post_id=3, content="this is answer"))
+    session.add(Answer(lawyer_id=3, post_id=4, content="this is answer"))
+    session.add(Answer(lawyer_id=4, post_id=5, content="this is answer"))
+    session.add(Answer(lawyer_id=5, post_id=6, content="this is answer"))
+    session.add(Answer(lawyer_id=2, post_id=1, content="this is answer"))
+    session.add(Answer(lawyer_id=1, post_id=1, content="this is answer"))
     
-    Session = sessionmaker(bind=engine)
-    session = Session()
+    session.commit
+
+def insertUsers():
+
+    
+    session.add(User(name="aaaaaaaaa", headportrait="aaaa", score="23"))
+    session.add(User(name="bbbb", headportrait="aaaa", score="2"))
+    session.add(User(name="cccc", headportrait="aaaa", score="0"))
+    session.add(User(name="dddd", headportrait="aaaa", score="34"))
+    session.add(User(name="eeee", headportrait="aaaa", score="653"))
+    session.add(User(name="fffff", headportrait="aaaa", score="3"))
+    session.add(User(name="ggggg", headportrait="aaaa", score="1"))
+    
+    session.commit();
+    pass
+
+def insertFirms():
+    
+
     session.add(Firm(name=u"安博律师事务所", addr=u"北京市大望路8号", longitude="116.435", latitude="39.993"))
     session.add(Firm(name=u"京豪律师事务所", addr=u"北京市西城区8号", longitude="116.464", latitude="39.948"))
     session.add(Firm(name=u"中银律师事务所", addr=u"北京市大兴区兴政街8号", longitude="116.376", latitude="40.012"))
@@ -42,7 +83,9 @@ def insertFirmsAndLawyers():
     session.add(Firm(name=u"中外律师事务所", addr=u"北京市昌平路8号", longitude="116.105", latitude="40.015"))
     
     session.commit()
-    
+
+def insertLawyers():
+
     session.add(Lawyer(name=u"韩丽丽", firm=1, headprotrait="a", certificateId=3))
     session.add(Lawyer(name=u"李丽话", firm=2, headprotrait="a", certificateId=2))
     session.add(Lawyer(name=u"武钢", firm=3, headprotrait="a", certificateId=1))
@@ -64,20 +107,26 @@ def insertFirmsAndLawyers():
 
 def query():
     
-    Session = sessionmaker(bind=engine)
-    session = Session()
-    
+   
     firms = session.query(Firm).filter_by(id=6).one()
     print firms.id, firms.name, firms.addr
     pass
 
+def insert():
+    insertFirms()
+#     insertLawyers()
+#     insertLawyerLocation()
+#     insertPostType()
+#     insertUsers()
+#     insertPostsAndAnswers()
+
 if __name__ == '__main__':
     'test'
-    pass
-#     insert()
+    insert()
 #     query()
 #     insertLawyerLocation()
 
 
 
+    
     

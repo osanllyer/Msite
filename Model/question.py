@@ -15,10 +15,39 @@ class Posts(Base):
     __tablename__ = 'posts'
     
     id = Column(Integer, primary_key=True)
-    uid = Column(Integer, ForeignKey('customer.id'))
+    uid = Column(Integer, ForeignKey('user.id'))
     content = Column(Text)
+    '问题分类'
     ptype = Column(Integer, ForeignKey('posttype.id'))
+
     add_at = Column(DateTime)
     changed_at = Column(DateTime)
+    status = Column(SmallInteger)
+    'n1'
+    user = relationship("User")
+    'answers, 1n'
+    answers = relationship("Answer")
     
+class Answer(Base):
+    '律师对用户的回答'
+    __tablename__ = 'answer'
+    
+    id = Column(Integer, primary_key=True)
+    lawyer_id = Column(Integer, ForeignKey('lawyer.id'))
+    post_id = Column(Integer, ForeignKey('posts.id'))
+    content = Column(Text)
+    add_at = Column(DateTime)
+    changed_at = Column(DateTime)
+    status = Column(SmallInteger)
+    chosen = Column(Boolean)
+    
+    'relations'
+    user = relationship("Lawyer")
+
+class PostType(Base):
+    '问题类型'
+    __tablename__ = 'posttype'
+    id = Column(Integer, primary_key=True)
+    type_name = Column(String)
+    posts = relationship("Posts", backref("PostType"))
     
