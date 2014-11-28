@@ -4,12 +4,26 @@ Created on Nov 26, 2014
 
 @author: lifenbo
 '''
-from Model.firm import Firm
-
 from sqlalchemy import *
 from sqlalchemy.orm import *
 from Model.base import *
 
+from Model.firm import Firm
+from Model.user import User
+
+def insertUsers():
+
+    
+    session.add(User(name="aaaaaaaaa", headportrait="aaaa", score="23"))
+    session.add(User(name="bbbb", headportrait="aaaa", score="2"))
+    session.add(User(name="cccc", headportrait="aaaa", score="0"))
+    session.add(User(name="dddd", headportrait="aaaa", score="34"))
+    session.add(User(name="eeee", headportrait="aaaa", score="653"))
+    session.add(User(name="fffff", headportrait="aaaa", score="3"))
+    session.add(User(name="ggggg", headportrait="aaaa", score="1"))
+    
+    session.commit();
+    pass
 
 def insertFirms():
 
@@ -27,3 +41,4 @@ def insertFirms():
     session.commit()
     
 insertFirms()
+insertUsers()

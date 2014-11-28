@@ -23,5 +23,5 @@ class Firm(Base):
     latitude = Column(String)
     last_updated = Column(DateTime)
     'lawyers, 1n'
-    lawyers = relationship('Lawyer', backref('firm'))
+    lawyers = relationship('Lawyer', backref=backref('firm'))
         

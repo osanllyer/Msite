@@ -6,11 +6,12 @@ Created on Nov 25, 2014
 '''
 
 
-from Model.firm import Firm
-from Model.lawyer import Lawyer, LawyerLocation
 from sqlalchemy import *
 from sqlalchemy.orm import *
 from Model.base import *
+
+from Model.firm import Firm
+from Model.lawyer import Lawyer, LawyerLocation
 from Model.user import User
 from Model.question import *
 
@@ -54,23 +55,10 @@ def insertPostsAndAnswers():
     
     session.commit
 
-def insertUsers():
 
-    
-    session.add(User(name="aaaaaaaaa", headportrait="aaaa", score="23"))
-    session.add(User(name="bbbb", headportrait="aaaa", score="2"))
-    session.add(User(name="cccc", headportrait="aaaa", score="0"))
-    session.add(User(name="dddd", headportrait="aaaa", score="34"))
-    session.add(User(name="eeee", headportrait="aaaa", score="653"))
-    session.add(User(name="fffff", headportrait="aaaa", score="3"))
-    session.add(User(name="ggggg", headportrait="aaaa", score="1"))
-    
-    session.commit();
-    pass
 
 def insertFirms():
     
-
     session.add(Firm(name=u"安博律师事务所", addr=u"北京市大望路8号", longitude="116.435", latitude="39.993"))
     session.add(Firm(name=u"京豪律师事务所", addr=u"北京市西城区8号", longitude="116.464", latitude="39.948"))
     session.add(Firm(name=u"中银律师事务所", addr=u"北京市大兴区兴政街8号", longitude="116.376", latitude="40.012"))

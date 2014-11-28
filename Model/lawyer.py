@@ -21,7 +21,7 @@ class Lawyer(Base):
     score = Column(Integer)
     firm_id = Column(Integer, ForeignKey('firm.id'))
     last_updated = Column(DateTime)
-    
+     
 print Lawyer().__table__   
     
 class LawyerLocation(Base):
