@@ -9,7 +9,8 @@ from sqlalchemy.orm import *
 from Model.base import *
 
 from Model.firm import Firm
-from Model.user import User
+from Model.question import User
+
 
 def insertUsers():
 
@@ -40,5 +41,5 @@ def insertFirms():
     
     session.commit()
     
-insertFirms()
+# insertFirms()
 insertUsers()

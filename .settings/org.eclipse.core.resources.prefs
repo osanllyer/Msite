@@ -3,7 +3,6 @@ encoding//Model/base.py=utf-8
 encoding//Model/firm.py=utf-8
 encoding//Model/lawyer.py=utf-8
 encoding//Model/question.py=utf-8
-encoding//Model/user.py=utf-8
 encoding//common/definitions.py=utf-8
 encoding//configurations/conf.py=utf-8
 encoding//templates/admin/init.py=utf-8

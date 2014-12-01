@@ -23,8 +23,6 @@ class Posts(Base):
     add_at = Column(DateTime)
     changed_at = Column(DateTime)
     status = Column(SmallInteger)
-    'n1'
-    user = relationship("User")
     'answers, 1n'
     answers = relationship("Answer")
     
@@ -44,10 +42,21 @@ class Answer(Base):
     'relations'
     user = relationship("Lawyer")
 
+class User(Base):
+    '非律师普通用户'
+    __tablename__ = "user"
+    id = Column(Integer, primary_key=True)
+    name = Column(String)
+    headportrait = Column(String)
+    score = Column(Integer)
+    last_updated = Column(DateTime)
+    '用户发的文章'
+    posts = relationship('Posts', backref = backref("user"))
+
 class PostType(Base):
     '问题类型'
     __tablename__ = 'posttype'
     id = Column(Integer, primary_key=True)
     type_name = Column(String)
-    posts = relationship("Posts", backref("PostType"))
+    posts = relationship("Posts", backref = backref("PostType"))
     

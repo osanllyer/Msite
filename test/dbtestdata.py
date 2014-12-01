@@ -12,7 +12,6 @@ from Model.base import *
 
 from Model.firm import Firm
 from Model.lawyer import Lawyer, LawyerLocation
-from Model.user import User
 from Model.question import *
 
 def insertLawyerLocation():
@@ -28,21 +27,21 @@ def insertLawyerLocation():
 
 def insertPostType():
 
-    session.add(PostType(typename='wedding'))
+    session.add(PostType(type_name='wedding'))
     
     pass
 
 def insertPostsAndAnswers():
 
-    session.add(Posts(uid=1, conent='this is my question', ptype=1))
-    session.add(Posts(uid=2, conent='this is my question', ptype=1))
-    session.add(Posts(uid=3, conent='this is my question', ptype=1))
-    session.add(Posts(uid=4, conent='this is my question', ptype=1))
-    session.add(Posts(uid=1, conent='this is my question', ptype=1))
-    session.add(Posts(uid=2, conent='this is my question', ptype=1))
-    session.add(Posts(uid=3, conent='this is my question', ptype=1))
-    session.add(Posts(uid=2, conent='this is my question', ptype=1))
-    session.add(Posts(uid=1, conent='this is my question', ptype=1))
+    session.add(Posts(uid=1, content='this is my question', ptype=1))
+    session.add(Posts(uid=2, content='this is my question', ptype=1))
+    session.add(Posts(uid=3, content='this is my question', ptype=1))
+    session.add(Posts(uid=4, content='this is my question', ptype=1))
+    session.add(Posts(uid=1, content='this is my question', ptype=1))
+    session.add(Posts(uid=2, content='this is my question', ptype=1))
+    session.add(Posts(uid=3, content='this is my question', ptype=1))
+    session.add(Posts(uid=2, content='this is my question', ptype=1))
+    session.add(Posts(uid=1, content='this is my question', ptype=1))
 
     session.add(Answer(lawyer_id=1, post_id=1, content="this is answer"))
     session.add(Answer(lawyer_id=2, post_id=2, content="this is answer"))
@@ -74,22 +73,22 @@ def insertFirms():
 
 def insertLawyers():
 
-    session.add(Lawyer(name=u"韩丽丽", firm=1, headprotrait="a", certificateId=3))
-    session.add(Lawyer(name=u"李丽话", firm=2, headprotrait="a", certificateId=2))
-    session.add(Lawyer(name=u"武钢", firm=3, headprotrait="a", certificateId=1))
-    session.add(Lawyer(name=u"孙悟空", firm=1, headprotrait="a", certificateId=54))
-    session.add(Lawyer(name=u"晨要紧", firm=5, headprotrait="a", certificateId=7))
-    session.add(Lawyer(name=u"猪八戒", firm=4, headprotrait="a", certificateId=45))
-    session.add(Lawyer(name=u"林黛玉", firm=3, headprotrait="a", certificateId=984))
-    session.add(Lawyer(name=u"贾宝玉", firm=4, headprotrait="a", certificateId=231))
-    session.add(Lawyer(name=u"毛泽东", firm=8, headprotrait="a", certificateId=11))
-    session.add(Lawyer(name=u"林彪", firm=4, headprotrait="a", certificateId=87684))
-    session.add(Lawyer(name=u"刘少奇", firm=6, headprotrait="a", certificateId=113))
-    session.add(Lawyer(name=u"周恩来", firm=7, headprotrait="a", certificateId=432))
-    session.add(Lawyer(name=u"薄熙来", firm=9, headprotrait="a", certificateId=873))
-    session.add(Lawyer(name=u"习近平", firm=10, headprotrait="a", certificateId=1354))
-    session.add(Lawyer(name=u"李鹏", firm=7, headprotrait="a", certificateId=55))
-    session.add(Lawyer(name=u"江泽民", firm=3, headprotrait="a", certificateId=2321))
+    session.add(Lawyer(name=u"韩丽丽", firm_id=1, headportrait="a", certificate_id=3))
+    session.add(Lawyer(name=u"李丽话", firm_id=2, headportrait="a", certificate_id=2))
+    session.add(Lawyer(name=u"武钢", firm_id=3, headportrait="a", certificate_id=1))
+    session.add(Lawyer(name=u"孙悟空", firm_id=1, headportrait="a", certificate_id=54))
+    session.add(Lawyer(name=u"晨要紧", firm_id=5, headportrait="a", certificate_id=7))
+    session.add(Lawyer(name=u"猪八戒", firm_id=4, headportrait="a", certificate_id=45))
+    session.add(Lawyer(name=u"林黛玉", firm_id=3, headportrait="a", certificate_id=984))
+    session.add(Lawyer(name=u"贾宝玉", firm_id=4, headportrait="a", certificate_id=231))
+    session.add(Lawyer(name=u"毛泽东", firm_id=8, headportrait="a", certificate_id=11))
+    session.add(Lawyer(name=u"林彪", firm_id=4, headportrait="a", certificate_id=87684))
+    session.add(Lawyer(name=u"刘少奇", firm_id=6, headportrait="a", certificate_id=113))
+    session.add(Lawyer(name=u"周恩来", firm_id=7, headportrait="a", certificate_id=432))
+    session.add(Lawyer(name=u"薄熙来", firm_id=9, headportrait="a", certificate_id=873))
+    session.add(Lawyer(name=u"习近平", firm_id=10, headportrait="a", certificate_id=1354))
+    session.add(Lawyer(name=u"李鹏", firm_id=7, headportrait="a", certificate_id=55))
+    session.add(Lawyer(name=u"江泽民", firm_id=3, headportrait="a", certificate_id=2321))
     
     session.commit()
 
@@ -102,11 +101,10 @@ def query():
 
 def insert():
     insertFirms()
-#     insertLawyers()
-#     insertLawyerLocation()
-#     insertPostType()
-#     insertUsers()
-#     insertPostsAndAnswers()
+    insertLawyers()
+    insertLawyerLocation()
+    insertPostType()
+    insertPostsAndAnswers()
 
 if __name__ == '__main__':
     'test'
